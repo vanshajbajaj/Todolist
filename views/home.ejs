@@ -1,0 +1,244 @@
+<html>
+
+<head>
+
+    <title>
+        <%=title%>
+    </title>
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="/css/home.css">
+    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="/javascript/axios.js"></script>
+
+</head>
+
+<body>
+
+    <% if ( ct==1 ){ %>
+        <div id="popup">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h3 class="animate-charcter">To Do List</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%}%>
+
+            <% if ( flag=="false" ) { %>
+
+                <div id="leftdiv" class="dispdiv">
+
+                    <div class="disphead">
+                        ADD TASK
+                    </div>
+
+                    <div class="dispcontent" id="taskformdiv">
+                        <!-- <h1><%= flag%></h1> -->
+
+                        <form action="/add-task" method="post" id="taskform">
+
+                            <input type="text" name="description" placeholder="Enter Description" id="formdesc"
+                                required>
+
+                            <div id="formcol">
+
+                                <!-- <input type="text" name="category" placeholder="enter category" id="formcat" required> -->
+                                <select id="formcat" name="category" placeholder="choose category">
+                                    <option value="Work">Work</option>
+                                    <option value="Personal">Personal</option>
+                                    <option value="College">College</option>
+                                    <option value="Home">Home</option>
+                                </select>
+                                <input type="date" name="date" placeholder="enter date" id="formdate" required>
+
+                            </div>
+
+                            <button type="submit" id="addbt" onclick="dispcheck()">Add Task</button>
+
+                            <div id="formtemp">
+                                Pending Tasks: <%= tasklist.length %>
+                            </div>
+
+                        </form>
+                        <%} else if ( flag=="true" ) { %>
+
+                            <div id="leftdiv" class="dispdiv">
+
+                                <div class="disphead">
+                                    EDIT TASK
+                                </div>
+
+                                <div class="dispcontent" id="taskformdiv">
+                                    <!-- <h1><%= flag%></h1> -->
+
+                                    <form action="/update-task/?id=<%=tasklist[flagid].id%>" method="post"
+                                        id="taskform">
+
+                                        <input type="text" name="description"
+                                            value="<%= tasklist[flagid].description %>" placeholder="Enter Description"
+                                            id="formdesc" required>
+
+                                        <div id="formcol">
+
+                                            <!-- <input type="text" name="category" placeholder="enter category" id="formcat" required> -->
+                                            <select id="formcat" name="category" placeholder="choose category">
+                                                <option value="<%= tasklist[flagid].category %>" selected>
+                                                    <%= tasklist[flagid].category %>
+                                                </option>
+                                                <option value="Work">Work</option>
+                                                <option value="Personal">Personal</option>
+                                                <option value="College">College</option>
+                                                <option value="Home">Home</option>
+                                            </select>
+                                            <input type="date" name="date" placeholder="enter date" id="formdate"
+                                                value="<%= tasklist[flagid].date.substring(0,10) %>" required>
+
+                                        </div>
+
+                                        <!-- <button type="submit" id="addbt" onclick="editdata(<%= flagid %>)">Edit Task</button> -->
+                                        <button type="submit" id="addbt"
+                                            style="background-color:rgba(0, 128, 0, 0.847)">Edit Task</button>
+
+                                        <div id="formtemp">
+                                            Pending Tasks: <%= tasklist.length %>
+                                        </div>
+
+                                    </form>
+
+                                    <%}%>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <div id="rightdiv" class="dispdiv">
+
+                                <div class="disphead">
+
+                                    PENDING TASKS
+
+                                </div>
+
+                                <div class="dispcontent" id="rightdisp">
+
+                                    <% for(let i of tasklist){ %>
+
+                                        <div class="taskdiv">
+
+                                            <div class="donediv">
+
+                                                <a href="/delete-task/?id=<%=i.id%>">
+                                                    <div class="donebt">
+                                                        <img src="/images/del.png">
+                                                    </div>
+                                                </a>
+
+                                                <a href="/get-task?id=<%= i.id%>">
+                                                    <img src="/images/edt.png">
+                                                </a>
+                                                
+
+                                            </div>
+
+                                            <div class="datadiv">
+
+                                                <div class="datadesc">
+                                                    <p class="descp">
+                                                        <%= i.description %>
+                                                    </p>
+                                                </div>
+
+                                                <div class="datadate">
+                                                    <img src="/images/calendar.png">
+                                                    <%= i.date.substring(0,10) %>
+                                                        
+                                                            <!-- <button id="editbt" onclick="editdata(<%= i.id %>)">Edit</button> -->
+                                                            <!-- <button id="editbt">Edit</button> -->
+                                                        
+                                                </div>
+
+                                            </div>
+
+                                            <div class="catdiv">
+
+
+
+                                                <% if(i.category=="Home" ){ %>
+
+                                                    <div class="datacat bgy">
+                                                        <p>
+                                                            <%= i.category %>
+                                                        </p>
+                                                    </div>
+
+                                                    <%} else if(i.category=="Work" ){ %>
+
+                                                        <div class="datacat bgp">
+                                                            <p>
+                                                                <%= i.category %>
+                                                            </p>
+                                                        </div>
+
+                                                        <%}else{ %>
+
+                                                            <div class="datacat bgg">
+                                                                <p>
+                                                                    <%= i.category %>
+                                                                </p>
+                                                            </div>
+
+                                                            <%} %>
+
+
+
+                                            </div>
+
+                                        </div>
+
+                                        <%}%>
+
+                                </div>
+
+                            </div>
+
+                            <!-- <h1>tasks</h1>
+
+        <div>
+
+            <ul>
+
+                <% for(let i of tasklist){ %>
+
+                    <li>
+
+                        <p> <%= i.description %> </p>
+                        <p> <%= i.category %> </p>
+                        <p> <%= i.date %> </p>
+                        <a href="/delete-task/?description=<%=i.description%>">Delete</a>
+
+                    </li>
+
+                <%}%>
+
+            </ul>
+
+        </div>
+
+        <form action="/add-task" method="post">
+
+            <input type="text" name="description" placeholder="enter description" required>
+            <input type="text" name="category" placeholder="enter category" required>
+            <input type="date" name="date" placeholder="enter date" required>
+
+            <button type="submit">Add task</button>
+
+        </form> -->
+
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+body {
+
+    margin: 0;
+    background-image: url("/images/desk5.jpg");
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: Helvetica;
+
+}
+
+#popup{
+
+    z-index: 2;
+    width:100vw;
+    height:100vh;
+    background-color: rgba(163, 158, 158, 0.747);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    opacity: 0;
+    animation: opct 3s alternate-reverse 0s 1 ease-in-out;
+
+}
+
+@keyframes opct{
+
+    0%{
+        opacity: 0;
+    }
+    10%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+
+}
+
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 70px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.dispdiv {
+
+    height:70%;
+    width:32%;
+    background-color: rgba(237, 237, 237, 0.838);
+    box-shadow: 2px 2px 4px 4px rgba(100, 99, 99, 0.267);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    /* margin:200px; */
+    /* border-top:2px solid rgb(132, 130, 130); */
+    transition: all 0.25s;
+
+}
+
+.dispdiv:hover{
+    box-shadow: 2px 2px 4px 8px rgba(100, 99, 99, 0.267);
+}
+
+.disphead{
+
+    width:100%;
+    height:14%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom:1px solid rgb(132, 130, 130);
+    /* border-bottom: 1px solid white; */
+    font-size: 35px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgb(41 19 2);
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.482);
+
+}
+
+.dispcontent{
+
+    width:80%;
+    height:80%;
+    /* border:1px solid blue; */
+
+}
+
+#taskform{
+
+    height:100%;
+    width:100%;
+    /* border:1px solid green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+#formdesc{
+
+    margin-top: 20px;
+    width:100%;
+    height:25%;
+    border:0px;
+    font-size: 15px;
+    /* border-bottom: 2px solid grey; */
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px 0px black;
+    background-color: rgba(92, 92, 92, 0.482);
+    color:white;
+
+}
+
+#formcol{
+
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#formcat{
+
+    width:50%;
+    height:30px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px 0px black;
+    border:0px;
+    text-align: center;
+
+}
+
+#formdate{
+
+    height:30px;
+    width:35%;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px 0px black;
+    border:0px;
+    text-align: center;
+    background-color: rgba(92, 92, 92, 0.482);;
+    color:white;
+
+}
+
+#addbt{
+
+    width:130px;
+    height:40px;
+    background-color: rgba(255, 56, 38, 0.842);
+    border:0px;
+    border-radius: 4px;
+    /* color: white; */
+    color:black;
+    transition: all 0.25s;
+    border: 0px;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.733);
+
+}
+
+#addbt:hover{
+
+    box-shadow: 0px 0px 4px 0px black;
+
+}
+
+#formtemp{
+    width:100%;
+    height:20%;
+    margin-top: 20px;
+    text-align: right;
+}
+
+#rightdisp{
+
+    background-color: rgba(92, 92, 92, 0.361);
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    border-radius: 4px;
+
+}
+
+.taskdiv{
+
+    width:100%;
+    height:100px;
+    min-height: 100px;
+    /* border:2px solid red; */
+    background-color: rgba(215, 213, 213, 0.6);
+    display: flex;
+    flex-direction: row;
+    /* border-top: 1px solid gray;
+    border-bottom: 1px solid gray; */
+    box-shadow: 0px 0px 1px 2px rgba(128, 128, 128, 0.342);
+    margin:1px 0px;
+
+}
+
+.taskdiv:hover{
+    box-shadow: 0px 0px 1px 4px rgba(128, 128, 128, 0.342);
+}
+
+.donediv{
+
+    height:100%;
+    width:10%;
+    /* border:1px solid green; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+
+.donediv img{
+    width:20px;
+    height:20px;
+}
+
+.donebt{
+
+    height:19px;
+    width:18px;
+    border:1px solid gray;
+    border-radius: 50%;
+    background-color: white;
+    transition: all 0.25s;
+    margin-top:30px;
+
+}
+
+.donebt:hover{
+
+    background-color: green;
+
+}
+
+.datadiv{
+
+    height:100%;
+    width:67%;
+    /* border:1px solid yellow; */
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+
+}
+
+.catdiv{
+
+    height:100%;
+    width:23%;
+    /* border:1px solid blue; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:10px;
+
+}
+
+.datacat{
+
+    width:90%;
+    height:35px;
+    /* border:2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+
+}
+
+.bgy{
+
+    background-color: rgba(233, 233, 60, 0.861);
+
+}
+
+.bgp{
+
+    background-color: rgba(126, 10, 126, 0.822);
+
+}
+
+.bgg{
+
+    background-color: rgba(27, 116, 27, 0.879);
+
+}
+
+.datadesc{
+
+    width:100%;
+    height:70%;
+    /* border:1px solid black; */
+    display: flex;
+    align-items: center;
+
+}
+
+.descp{
+    margin:10px;
+    margin-top: 35px;
+    color:rgb(44, 44, 44);
+    font-size:20px;
+    letter-spacing: 1px;
+}
+
+.datadate{
+
+    width:100%;
+    height:30%;
+    /* border:1px solid black; */
+    display: flex;
+    align-items: center;
+    color: rgb(91, 91, 91);
+
+}
+
+.datadate img{
+
+    width:20px;
+    height:20px;
+    margin:0px 10px;
+
+}
+
+input{
+
+    background-color: rgba(252, 246, 246, 0.708);
+
+}
+
+select{
+    /* background-color: rgba(252, 246, 246, 0.708); */
+    background-color: rgba(92, 92, 92, 0.482);;
+    color:white;
+}
